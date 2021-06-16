@@ -1,0 +1,55 @@
+sudo -u postgres -i
+psql
+
+CREATE DATABASE helloworld;
+
+
+CREATE USER djangouser WITH PASSWORD 'djangopostgres';
+
+ALTER ROLE djangouser SET client_encoding TO 'utf8';
+ALTER ROLE djangouser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE djangouser SET timezone TO 'UTC';
+
+
+GRANT ALL PRIVILEGES ON DATABASE helloworld TO djangouser;
+
+# FROM production as development
+
+# COPY /requirements/dev.txt ./requirements/dev.txt
+# RUN pip install -r /requirements/dev.txt
+
+# COPY . .
+# https://github.com/LondonAppDeveloper/deploy-django-with-docker-compose/blob/main/docker-compose-deploy.yml
+# https://www.youtube.com/watch?v=CELsEhInIEc&list=PL39pssg07dpDJas1vxb7Dyw5f8SkAw6c-&index=8
+# https://www.youtube.com/watch?v=rA4X73E_HV0&list=PL39pssg07dpDJas1vxb7Dyw5f8SkAw6c-&index=1
+
+https://github.com/pydanny/cookiecutter-django/issues/2767
+
+
+https://www.youtube.com/watch?v=ZJ33N3ABIa0&t=531s
+
+
+
+sudo docker-compose run web python manage.py createsuperuser
+
+curl -X POST -H "Content-Type: application/json" \
+     -d '{ "username": "john", "email": "jdoe@gmail.com",  "password": "django"}' \
+     http://0.0.0.0:8000/api/auth/register
+
+
+curl -X POST -H "Content-Type: application/json" \
+     -d '{ "username": "john", "password": "django"}' \
+    http://0.0.0.0:8000/api/auth/login
+
+
+    // add more to username
+    https://github.com/CryceTruly/incomeexpensesapi/blob/ecee2fb78645b41187401b42862e71ab45e8e80a/authentication/serializers.py
+
+    https://github.com/SteinOveHelset/djackets_django/blob/main/order/views.py
+
+
+
+curl -X GET \
+  'http://0.0.0.0:8000/api/auth/user' \
+  -H 'authorization: Token 35112f7a3f3cc388da4cebe700b297ab72c0324164173f0bb22b0edd652aa2cd' 
+
